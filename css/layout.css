@@ -1,0 +1,45 @@
+header{
+  text-align: center;
+  background-color: brown;
+  padding: 25px;
+  height: 65px;
+}
+select{
+  float: left;
+}
+h1{
+  font-size: 30px;
+  font-weight: bolder;
+  margin: 10px;
+}
+h2{
+  font-size: 25px;
+  font-weight: bolder;
+  margin: 7px;
+  background-color: rgb(117, 52, 52);
+  padding: 7px;
+  color: antiquewhite;
+}
+img{
+  width: 50%;
+  height: 50%;
+  margin: 10px;
+  border-radius: 50%;
+}
+div,section{
+  width: 250px;
+  height: 300px;
+  border: saddlebrown solid;
+  float: left;
+  text-align: center;
+  margin: 5px;
+  box-shadow: 4px 5px rgb(126, 76, 41);
+}
+
+footer{
+  width: 100%;
+  clear: both;
+  margin: 20px 0 0;
+  text-align: center;
+  padding: 10px;
+}
