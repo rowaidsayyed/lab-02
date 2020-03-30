@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Thambi+2&display=swap');
+
+.num,.tt{
+  cursor: pointer;
+  margin: 0 10px;
+  background-color: salmon;
+  padding: 5px;
+  border-radius: 10px;
+  float: right;
+}
+p{
+  font-style: italic;
+  font-family: 'Baloo Thambi 2', cursive;
+  font-size: large;
+}
