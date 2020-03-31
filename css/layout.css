@@ -1,17 +1,44 @@
 header{
   text-align: center;
   background-color: brown;
-  padding: 25px;
-  height: 65px;
+  padding: 1%;
+  height: 95px;
+}
+nav{
+  width: 20%;
+  margin: auto;
+}
+ul li{
+  display: inline-block;
+  margin: 5px;
+  background-color: sienna;
+  border-left:solid red ;
+  padding: 7px;
+  cursor: pointer;
+  text-transform: uppercase;
 }
 select{
   float: left;
+  width: 20%;
 }
 h1{
   font-size: 30px;
   font-weight: bolder;
   margin: 10px;
 }
+
+div,section{
+  width: 250px;
+  height: 330px;
+  border: saddlebrown solid;
+  text-align: center;
+  margin: 5px;
+  box-shadow: 4px 5px rgb(126, 76, 41);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} 
+
 h2{
   font-size: 25px;
   font-weight: bolder;
@@ -25,21 +52,16 @@ img{
   height: 50%;
   margin: 10px;
   border-radius: 50%;
+  justify-self: center;
 }
-div,section{
-  width: 250px;
-  height: 300px;
-  border: saddlebrown solid;
-  float: left;
-  text-align: center;
-  margin: 5px;
-  box-shadow: 4px 5px rgb(126, 76, 41);
-}
+
 
 footer{
   width: 100%;
-  clear: both;
+  /* clear: both; */
   margin: 20px 0 0;
   text-align: center;
   padding: 10px;
+  /* justify-self: end; */
+  /* order: 3; */
 }
