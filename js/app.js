@@ -1,9 +1,26 @@
 'use strict';
 
 var allArr = [];
+var dP=0;
+getData1();
+$('#page1Button').on('click',()=>{
+  dP =0;
+  allArr = [];
+  $('main').empty()
+  $('select').find('option').remove();
+  $('select').append('<option value="default">Filter by Keyword</option>');
+  getData1();
+});
+$('#page2Button').on('click',()=>{
+  dP =1;
+  allArr = [];
+  $('main').empty()
+  $('select').find('option').remove();
+  $('select').append('<option value="default">Filter by Keyword</option>');
+  getData2();
+});
 
 
-getData();
 
 function Gal(url,title,description,keyword,horns){
   this.url = url;
@@ -13,7 +30,14 @@ function Gal(url,title,description,keyword,horns){
   this.horns = horns;
   allArr.push(this);
 }
-function getData(){
+Gal.prototype.hii = function(){
+  let persClone = '';
+  persClone = $('#photo-template').html();
+  let mustatchHTML = Mustache.render(persClone,this)
+  $('main').append(mustatchHTML);
+};
+
+function getData1(){
   $.get('data/page-1.json')
     .then (data =>{
       data.forEach(element => {
@@ -22,18 +46,25 @@ function getData(){
       });
       allArr.sort(compareTitle);
       allArr.forEach((e) => {
-        displayImages(e);
+        e.hii();
       });
+      $('#photo-template').hide();
     });
 }
-function displayImages(imagge){
-  $('main').append('<div id ="photo-template"> </div>')
-  $('#photo-template').append(`<h2>${imagge.title}</h2>`);
-  $('#photo-template').append(`<img src='${imagge.url}' alt='${imagge.title}' >`);
-  $('#photo-template').append(`<p>${imagge.description}</p>`);
-  $('#photo-template').append(`<p>Horns # = ${imagge.horns}</p>`);
-  $('#photo-template').removeAttr('id');
 
+function getData2(){
+  $.get('data/page-2.json')
+    .then (data =>{
+      data.forEach(element => {
+        let p = new Gal(element.image_url,element.title,element.description,element.keyword,element.horns);
+        options(p);
+      });
+      allArr.sort(compareTitle);
+      allArr.forEach((e) => {
+        e.hii();
+      });
+      $('#photo-template').hide();
+    });
 }
 
 function options(imagge){
@@ -49,10 +80,10 @@ function options(imagge){
 
 $('select').on('change',function(){
   let choose = $(this).children('option:selected').val();
-  $('main').empty();
+  $('main').empty()
   allArr.forEach(e => {
     if(e.keyword === choose || choose === 'default'){
-      displayImages(e);
+      e.hii();
     }
   });
 });
@@ -80,28 +111,56 @@ function compareTitle(a, b) {
   }
   return comparison;
 }
+
 $('.num').on('click',function(){
-  $('main').empty();
   allArr.sort(compareHorns);
 
   let s = $('select').children('option:selected').val();
+  $('main').empty()
   allArr.forEach(e => {
     if(e.keyword === s || s === 'default'){
-      displayImages(e);
+      e.hii();
     }
-
   });
 });
 
 $('.tt').on('click',function(){
-  $('main').empty();
   allArr.sort(compareTitle);
   let s = $('select').children('option:selected').val();
+  $('main').empty()
   allArr.forEach(e => {
     if(e.keyword === s || s === 'default'){
-      displayImages(e);
+      e.hii();
     }
-
   });
 });
+var tog =0 ;
+$('main').on('click','div',function(){
+  if(tog === 0){
+    let s = $(this).index();
+    let calledObj = allArr[s];
+    $('main').empty();
+    let persClone = '';
+    persClone = $('#largeDiv').html();
+    let mustatchHTML = Mustache.render(persClone,calledObj);
+    $('main').append(mustatchHTML);
+    tog++;
+  }else{
+    tog=0;
+    $('main').empty();
+    $('select').find('option').remove();
+    $('select').append('<option value="default">Filter by Keyword</option>');
+    allArr=[];
+    if(dP===0) getData1();
+    else getData2();
+  }
+});
+// $('div').on('focusout',function(){
+//   console.log('ssss');
+// });
+// $('#zz').on('mouseup',function(){
+//   console.log('sadasd');
+//   $('#largeDiv').hide();
+//   $('main').children().show();
+// });
 
