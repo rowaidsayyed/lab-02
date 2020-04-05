@@ -90,3 +90,11 @@ Start time: *2:50 pm*
 Finish time: *3:50 pm*
 
 Actual time needed to complete: *35 minutes*
+
+/*************************************************************************/
+
+Number and name of feature:*Stretch Goal: fuzzy search*
+
+Estimate of time needed to complete: *30 minute*
+
+Actual time needed to complete: *20 minutes*

@@ -164,3 +164,27 @@ $('main').on('click','div',function(){
 //   $('main').children().show();
 // });
 
+
+
+
+
+$('#search').on('keyup',function(){
+  let str = '';
+  let newArr =[];
+  allArr.forEach(e => {
+    newArr.push(e.keyword);
+  });
+  str=newArr.join(' ');
+  $('main').empty()
+  let q = $('#search').val();
+  let s =`\\b(${q})\\w+`;
+  let regx = new RegExp(s,'gi');
+  let char = str.match(regx) || ['nothing'];
+  let i =0;
+  allArr.forEach(e => {
+    if(e.keyword === char[i]){
+      e.hii();
+      i++;
+    }
+  });
+});
